@@ -1,0 +1,1066 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özel Tasarım Giyim Mağazası</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        /* CSS Stiller */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&h=500');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff5722;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e64a19;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Ana Navigasyon Stili */
+        .main-nav {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: 500;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #6e48aa;
+        }
+
+        .nav-link.with-submenu {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .category-pages {
+            display: none;
+        }
+
+        .category-page {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .category-page.active {
+            display: block;
+        }
+
+        .category-header {
+            background-color: #6e48aa;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 30px;
+        }
+
+        .category-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .category-header p {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .subcategory-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .subcategory-card {
+            width: 250px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .subcategory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .subcategory-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .subcategory-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .subcategory-card:hover .subcategory-image img {
+            transform: scale(1.1);
+        }
+
+        .subcategory-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .subcategory-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .subcategory-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* Kategori kartları için stil */
+        .category-section {
+            margin: 50px 0;
+        }
+
+        .category-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .category-card {
+            width: 280px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover .category-image img {
+            transform: scale(1.1);
+        }
+
+        .category-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-info h3 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .category-info p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Form alanı stili */
+        .newsletter-section {
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            padding: 60px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-description {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .required-field::after {
+            content: " *";
+            color: #ffcccc;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .newsletter-input:invalid {
+            border: 1px solid #ffcccc;
+        }
+
+        .error-message {
+            color: #ffcccc;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .newsletter-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+
+        .newsletter-button:hover {
+            background-color: #e64a19;
+        }
+
+        textarea.newsletter-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Form Sonuç Mesajı */
+        .form-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            display: none;
+        }
+
+        /* Geri dön butonu için stil */
+        .back-button {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+
+        /* Responsive Tasarım */
+        @media (max-width: 768px) {
+            .nav-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Özel Tasarım Giyim</h1>
+            <p>Kendi tarzını keşfet</p>
+        </div>
+    </header>
+
+    <!-- Ana Menü -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showMainPage(); return false;">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showCategoryPage('tisortler'); return false;">Tişörtler</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showCategoryPage('sweatshirtler'); return false;">Sweatshirtler</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showCategoryPage('hirkalar'); return false;">Hırkalar</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showCategoryPage('esofmanlar'); return false;">Eşofmanlar</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showCategoryPage('atkilar'); return false;">Atkılar</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="showCategoryPage('taraftar-setleri'); return false;">Taraftar Setleri</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">İletişim</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Ana Sayfa İçeriği -->
+    <div id="main-page">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1>Özel Tasarım Giyim Koleksiyonu</h1>
+            <p>Kendine özgü tarzını keşfet ve en yeni koleksiyonlarımızla tarzını yansıt. Birbirinden şık ve özel tasarım ürünlerimizle farkını ortaya koy.</p>
+            <a href="#categories" class="btn">Koleksiyonu Keşfet</a>
+        </section>
+
+        <!-- Kategoriler Bölümü -->
+        <section id="categories" class="category-section">
+            <div class="container">
+                <h2>Kategoriler</h2>
+                <div class="categories">
+                    <!-- Tişörtler Kategori Kartı -->
+                    <div class="category-card" onclick="showCategoryPage('tisortler')">
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Tişörtler">
+                        </div>
+                        <div class="category-info">
+                            <h3>Tişörtler</h3>
+                            <p>Günlük stilinizi tamamlayacak rahat ve şık tişört modelleri</p>
+                            <a href="#" class="btn" onclick="showCategoryPage('tisortler'); return false;">Keşfet</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Sweatshirtler Kategori Kartı -->
+                    <div class="category-card" onclick="showCategoryPage('sweatshirtler')">
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Sweatshirtler">
+                        </div>
+                        <div class="category-info">
+                            <h3>Sweatshirtler</h3>
+                            <p>Soğuk havalarda şıklığınızdan ödün vermeyeceğiniz sweatshirt modelleri</p>
+                            <a href="#" class="btn" onclick="showCategoryPage('sweatshirtler'); return false;">Keşfet</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Hırkalar Kategori Kartı -->
+                    <div class="category-card" onclick="showCategoryPage('hirkalar')">
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Hırkalar">
+                        </div>
+                        <div class="category-info">
+                            <h3>Hırkalar</h3>
+                            <p>Günlük kombinlerinizi tamamlayacak şık ve rahat hırka modelleri</p>
+                            <a href="#" class="btn" onclick="showCategoryPage('hirkalar'); return false;">Keşfet</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Eşofmanlar Kategori Kartı -->
+                    <div class="category-card" onclick="showCategoryPage('esofmanlar')">
+                        <div class="category-image">
+                            <img src="esofman1.jpg" alt="Eşofmanlar">
+                        </div>
+                        <div class="category-info">
+                            <h3>Eşofmanlar</h3>
+                            <p>Spor ve günlük kullanım için konforlu eşofman modelleri</p>
+                            <a href="#" class="btn" onclick="showCategoryPage('esofmanlar'); return false;">Keşfet</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Atkılar Kategori Kartı -->
+                    <div class="category-card" onclick="showCategoryPage('atkilar')">
+                        <div class="category-image">
+                            <img src="atkı1.jpg" alt="Atkılar">
+                        </div>
+                        <div class="category-info">
+                            <h3>Atkılar</h3>
+                            <p>Soğuk havalardan korunurken şıklığınızı tamamlayacak atkı modelleri</p>
+                            <a href="#" class="btn" onclick="showCategoryPage('atkilar'); return false;">Keşfet</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Taraftar Setleri Kategori Kartı -->
+                    <div class="category-card" onclick="showCategoryPage('taraftar-setleri')">
+                        <div class="category-image">
+                            <img src="taraftar formaları.jpg" alt="Taraftar Setleri">
+                        </div>
+                        <div class="category-info">
+                            <h3>Taraftar Setleri</h3>
+                            <p>Takımınıza olan desteğinizi gösterecek özel taraftar ürünleri</p>
+                            <a href="#" class="btn" onclick="showCategoryPage('taraftar-setleri'); return false;">Keşfet</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Kategori Sayfaları -->
+    <div id="category-pages" class="category-pages">
+        <!-- Tişörtler Sayfası -->
+        <div id="tisortler-page" class="category-page">
+            <div class="container">
+                <a href="#" class="back-button" onclick="showMainPage(); return false;">
+                    <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+                </a>
+                
+                <div class="category-header">
+                    <h2>Tişörtler</h2>
+                    <p>Günlük stilinizi tamamlayacak rahat ve şık tişört modelleri</p>
+                </div>
+                
+                <div class="subcategory-list">
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800" alt="Baskılı Tişörtler">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Baskılı Tişörtler</h3>
+                            <p>Modern grafik tasarımlı, yüksek kaliteli baskılı tişörtler</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800" alt="Düz Tişörtler">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Düz Tişörtler</h3>
+                            <p>Günlük kullanım için ideal, nefes alabilen kumaştan düz tişörtler</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800" alt="Polo Tişörtler">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Polo Tişörtler</h3>
+                            <p>Şık ve rahat, iş ve günlük kullanım için uygun polo yakalar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800" alt="Uzun Kollu Tişörtler">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Uzun Kollu Tişörtler</h3>
+                            <p>Sonbahar ve ilkbahar için ideal, yumuşak kumaşlı modeller</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sweatshirtler Sayfası -->
+        <div id="sweatshirtler-page" class="category-page">
+            <div class="container">
+                <a href="#" class="back-button" onclick="showMainPage(); return false;">
+                    <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+                </a>
+                
+                <div class="category-header">
+                    <h2>Sweatshirtler</h2>
+                    <p>Soğuk havalarda şıklığınızdan ödün vermeyeceğiniz sweatshirt modelleri</p>
+                </div>
+                
+                <div class="subcategory-list">
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800" alt="Kapüşonlu Sweatshirtler">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Kapüşonlu Sweatshirtler</h3>
+                            <p>Soğuk havalar için ideal, içi yumuşak tüylü kapüşonlu modeller</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800" alt="Fermuarlı Sweatshirtler">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Fermuarlı Sweatshirtler</h3>
+                            <p>Pratik kullanım için tam boy fermuarlı, cepli modeller</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="https://images.unsplash.com/photo-1606122017369-d782bbb78f32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800" alt="Baskılı Sweatshirtler">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Baskılı Sweatshirtler</h3>
+                            <p>Modern tasarım baskılı, rahat kalıp sweatshirtler</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800" alt="Oversize Sweatshirtler">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Oversize Sweatshirtler</h3>
+                            <p>Güncel moda trendi geniş kesim, pamuklu oversize modeller</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hırkalar Sayfası -->
+        <div id="hirkalar-page" class="category-page">
+            <div class="container">
+                <a href="#" class="back-button" onclick="showMainPage(); return false;">
+                    <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+                </a>
+                
+                <div class="category-header">
+                    <h2>Hırkalar</h2>
+                    <p>Günlük kombinlerinizi tamamlayacak şık ve rahat hırka modelleri</p>
+                </div>
+                
+                <div class="subcategory-list">
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="hırka1.jpg" alt="Örme Hırkalar">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Örme Hırkalar</h3>
+                            <p>El işçiliği detaylarıyla sıcak tutan kaliteli örme hırkalar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="hırka2.jpg">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Düğmeli Hırkalar</h3>
+                            <p>Klasik düğme detaylı, cepli ve şık tasarım hırkalar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="hırka3.jpg" alt="Uzun Hırkalar">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Uzun Hırkalar</h3>
+                            <p>Uzun model, rahat kalıplı mevsim geçişleri için ideal hırkalar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="hırka4.jpg" alt="Desenli Hırkalar">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Desenli Hırkalar</h3>
+                            <p>Göz alıcı desenlerle donatılmış, trend tasarım hırkalar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Eşofmanlar Sayfası -->
+        <div id="esofmanlar-page" class="category-page">
+            <div class="container">
+                <a href="#" class="back-button" onclick="showMainPage(); return false;">
+                    <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+                </a>
+                
+                <div class="category-header">
+                    <h2>Eşofmanlar</h2>
+                    <p>Spor ve günlük kullanım için konforlu eşofman modelleri</p>
+                </div>
+                
+                <div class="subcategory-list">
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="esofman1.jpg" alt="Eşofman Takımları">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Eşofman Takımları</h3>
+                            <p>Üst ve alt takım spor aktiviteleri için özel üretim eşofmanlar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="esofman2.jpg" alt="Eşofman Altları">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Eşofman Altları</h3>
+                            <p>Rahat kalıp, elastik belli yüksek kaliteli eşofman altları</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="esofman3.jpg" alt="Eşofman Üstleri">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Eşofman Üstleri</h3>
+                            <p>Spor ve günlük kullanım için farklı model eşofman üstleri</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="esofman4.jpeg" alt="Spor Eşofmanlar">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Spor Eşofmanlar</h3>
+                            <p>Fitness ve spor aktiviteleri için teknolojik kumaşlı eşofmanlar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Atkılar Sayfası -->
+        <div id="atkilar-page" class="category-page">
+            <div class="container">
+                <a href="#" class="back-button" onclick="showMainPage(); return false;">
+                    <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+                </a>
+                
+                <div class="category-header">
+                    <h2>Atkılar</h2>
+                    <p>Soğuk havalardan korunurken şıklığınızı tamamlayacak atkı modelleri</p>
+                </div>
+                
+                <div class="subcategory-list">
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="atkı1.jpg" alt="Örme Atkılar">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Örme Atkılar</h3>
+                            <p>El işi görünümlü yün ve pamuk karışımı örme atkılar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="atkı2.jpg" alt="Kaşmir Atkılar">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Kaşmir Atkılar</h3>
+                            <p>Yumuşak dokusu ve ısı tutma özelliğiyle premium kaşmir atkılar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="atkı3.jpg" alt="Desenli Atkılar">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Desenli Atkılar</h3>
+                            <p>Ekose, çizgili ve geometrik desenli çeşitli atkı modelleri</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="atkı4.jpg" alt="Şal Atkılar">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Şal Atkılar</h3>
+                            <p>Hem atkı hem de şal olarak kullanılabilen geniş tasarımlar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Taraftar Setleri Sayfası -->
+        <div id="taraftar-setleri-page" class="category-page">
+            <div class="container">
+                <a href="#" class="back-button" onclick="showMainPage(); return false;">
+                    <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+                </a>
+                
+                <div class="category-header">
+                    <h2>Taraftar Setleri</h2>
+                    <p>Takımınıza olan desteğinizi gösterecek özel taraftar ürünleri</p>
+                </div>
+                
+                <div class="subcategory-list">
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="futbol1.jpg" alt="Futbol Takımları">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Futbol Takımları</h3>
+                            <p>Fenerbahçe, Galatasaray, Beşiktaş ve diğer takımların taraftar ürünleri</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="basketbol1.jpg" alt="Basketbol Takımları">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Basketbol Takımları</h3>
+                            <p>Anadolu Efes, Fenerbahçe Beko ve diğer basketbol kulüpleri ürünleri</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="taraftar formaları.jpg" alt="Taraftar Formaları">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Taraftar Formaları</h3>
+                            <p>Farklı sezonlara ait özel tasarım taraftar formaları</p>
+                        </div>
+                    </div>
+                    
+                    <div class="subcategory-card">
+                        <div class="subcategory-image">
+                            <img src="taraftaraksesuar.jpg" alt="Taraftar Aksesuarları">
+                        </div>
+                        <div class="subcategory-info">
+                            <h3>Taraftar Aksesuarları</h3>
+                            <p>Atkı, bere, bileklik ve diğer taraftar aksesuarları</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Bölümü -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2 class="newsletter-title">Yeniliklerden Haberdar Olun</h2>
+            <p class="newsletter-description">Yeni ürünler, özel teklifler ve indirimlerden ilk siz haberdar olun. Bültene kayıt olun ve %10 indirim kazanın.</p>
+            
+            <form id="newsletter-form" class="newsletter-form">
+                <div class="form-group">
+                    <label for="name" class="required-field">Ad Soyad</label>
+                    <input type="text" id="name" class="newsletter-input" required>
+                    <div id="name-error" class="error-message">Bu alan zorunludur, lütfen adınızı ve soyadınızı giriniz.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="required-field">E-posta Adresiniz</label>
+                    <input type="email" id="email" class="newsletter-input" required>
+                    <div id="email-error" class="error-message">Lütfen geçerli bir e-posta adresi giriniz.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="required-field">Telefon Numaranız</label>
+                    <input type="tel" id="phone" class="newsletter-input" required>
+                    <div id="phone-error" class="error-message">Bu alan zorunludur, lütfen geçerli bir telefon numarası giriniz.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comment">Yorumunuz</label>
+                    <textarea id="comment" class="newsletter-input" placeholder="Bize görüşlerinizi yazabilirsiniz..."></textarea>
+                </div>
+                
+                <button type="submit" class="newsletter-button">Gönder</button>
+            </form>
+            
+            <div id="form-result" class="form-result"></div>
+        </div>
+    </section>
+
+    <script>
+        // Kategori sayfaları için JavaScript fonksiyonları
+        function showMainPage() {
+            document.getElementById('main-page').style.display = 'block';
+            document.getElementById('category-pages').style.display = 'none';
+            
+            // Tüm kategori sayfalarını gizle
+            const categoryPages = document.querySelectorAll('.category-page');
+            categoryPages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Sayfayı en üste kaydır
+            window.scrollTo(0, 0);
+        }
+        
+        function showCategoryPage(categoryId) {
+            // Ana sayfayı gizle
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('category-pages').style.display = 'block';
+            
+            // Tüm kategori sayfalarını gizle
+            const categoryPages = document.querySelectorAll('.category-page');
+            categoryPages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Seçilen kategori sayfasını göster
+            document.getElementById(categoryId + '-page').classList.add('active');
+            
+            // Sayfayı en üste kaydır
+            window.scrollTo(0, 0);
+        }
+        
+        // Form doğrulama ve işleme
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.getElementById('newsletter-form');
+            const formResult = document.getElementById('form-result');
+            
+            // Input elemanları
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            
+            // Hata mesajları
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+            const phoneError = document.getElementById('phone-error');
+            
+            // İsim alanı doğrulama
+            nameInput.addEventListener('input', function() {
+                if (nameInput.value.trim() === '') {
+                    nameError.style.display = 'block';
+                    nameInput.setCustomValidity('Bu alan zorunludur, lütfen adınızı ve soyadınızı giriniz.');
+                } else {
+                    nameError.style.display = 'none';
+                    nameInput.setCustomValidity('');
+                }
+            });
+            
+            // E-posta doğrulama
+            emailInput.addEventListener('input', function() {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (!emailPattern.test(emailInput.value) && emailInput.value !== '') {
+                    emailError.style.display = 'block';
+                    emailInput.setCustomValidity('Lütfen geçerli bir e-posta adresi giriniz.');
+                } else {
+                    emailError.style.display = 'none';
+                    emailInput.setCustomValidity('');
+                }
+            });
+            
+            // Telefon doğrulama
+            phoneInput.addEventListener('input', function() {
+                const phonePattern = /^[0-9\s\-\+\(\)]{10,15}$/;
+                
+                if (!phonePattern.test(phoneInput.value) && phoneInput.value !== '') {
+                    phoneError.style.display = 'block';
+                    phoneInput.setCustomValidity('Lütfen geçerli bir telefon numarası giriniz.');
+                } else {
+                    phoneError.style.display = 'none';
+                    phoneInput.setCustomValidity('');
+                }
+            });
+            
+            // Form gönderimi
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Tüm alanların doğru doldurulduğunu kontrol et
+                let hasError = false;
+                
+                if (nameInput.value.trim() === '') {
+                    nameError.style.display = 'block';
+                    hasError = true;
+                }
+                
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value)) {
+                    emailError.style.display = 'block';
+                    hasError = true;
+                }
+                
+                const phonePattern = /^[0-9\s\-\+\(\)]{10,15}$/;
+                if (!phonePattern.test(phoneInput.value)) {
+                    phoneError.style.display = 'block';
+                    hasError = true;
+                }
+                
+                if (hasError) {
+                    return;
+                }
+                
+                // Form verilerini al
+                const name = nameInput.value;
+                const email = emailInput.value;
+                const phone = phoneInput.value;
+                const comment = document.getElementById('comment').value;
+                
+                // Form sonuç mesajını oluştur
+                const resultMessage = `
+                    <h3>Form Başarıyla Gönderildi!</h3>
+                    <p><strong>Ad Soyad:</strong> ${name}</p>
+                    <p><strong>E-posta:</strong> ${email}</p>
+                    <p><strong>Telefon:</strong> ${phone}</p>
+                    <p><strong>Yorumunuz:</strong> ${comment || 'Belirtilmedi'}</p>
+                `;
+                
+                // Sonucu göster
+                formResult.innerHTML = resultMessage;
+                formResult.style.display = 'block';
+                
+                // Formu sıfırla
+                newsletterForm.reset();
+                
+                // Sonuç mesajını 5 saniye sonra gizle
+                setTimeout(function() {
+                    formResult.style.display = 'none';
+                }, 5000);
+            });
+        });
+    </script>
+
+<!-- İletişim + Chatbot Bölümü -->
+<section class="newsletter-section" style="background-color: #f3f3f3; color: #333; padding: 60px 0;">
+    <div class="container" style="text-align: center;">
+        <h2 style="margin-bottom: 20px;">Bize Ulaşın</h2>
+        <p style="margin-bottom: 30px;">Sorularınızı bize iletebilir ya da aşağıdaki sohbet botuyla doğrudan konuşabilirsiniz.</p>
+        <a href="https://poe.com/Tisort" target="_blank" style="
+            display: inline-block;
+            background-color: #ff5722;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        ">Chatbot ile Sohbet Et</a>
+    </div>
+</section>
+
+</body>
+</html>
